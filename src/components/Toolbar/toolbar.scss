@@ -1,0 +1,58 @@
+.toolbar {
+  background-color: blueviolet;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+
+  &__toggle-btn {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+    margin-left: 0.5rem;
+
+    a {
+      color: aliceblue;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.toolbar__nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+
+  &-items {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    li {
+      padding: 0 5px;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        color: aquamarine;
+      }
+    }
+  }
+}

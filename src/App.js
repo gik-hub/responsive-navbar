@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Toolbar from "./components/Toolbar/Toolbar";
+import Sidedrawer from "./components/SideDrawer/SideDrawer";
+import Backdrop from "./components/Backdrop/Backdrop";
 
 function App() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  let backDrop;
+
+  const toggleDrawer = () => setDrawerOpen(!drawerOpen);
+  const backdropClick = () => {
+    setDrawerOpen(false);
+  };
+
+  if (drawerOpen) {
+    backDrop = <Backdrop click={backdropClick} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ height: "100vh" }}>
+      <Toolbar toggleDrawer={toggleDrawer} />
+      <Sidedrawer shown={drawerOpen} />
+      {backDrop}
+      <main style={{ marginTop: "50px" }}>
+        <p>this is the page content</p>
+      </main>
     </div>
   );
 }
